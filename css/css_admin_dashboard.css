@@ -1,0 +1,449 @@
+/* Scroll bars mod */
+html::-webkit-scrollbar {
+    width: 10px;
+    background-color: #A9ABA8;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #3B3B3B;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Century Gothic" !important;
+    margin: 0;
+    background-color: #CBCCC7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.main-container {
+    width: 90%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.admin-nav {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-nav button {
+    background-color: #3b3b3b00;
+    border: none;
+    color: #3B3B3B;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0%;
+    padding: 0%;
+    transition: scale 0.3s ease;
+}
+
+.admin-nav button:hover {
+    color: #282828;
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.admin-nav span {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-nav span img {
+    width: 18px;
+    height: auto;
+    margin-right: 8px;
+}
+
+.dashboard-contents {
+    width: 100%;
+    height: 81.5vh;
+}
+
+.dashboard-nav {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5vh solid #3B3B3B;
+}
+
+.dashboard-nav span {
+    font-size: 40px;
+}
+
+.dashboard-nav form {
+    margin: 0;
+    padding: 0%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #3B3B3B;
+    justify-content: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dashboard-nav .dashboard-search {
+    width: 200px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    font-family: "Century Gothic";
+    padding: 0 5px;
+}
+
+.dashboard-nav .dashboard-search[type="text"]:focus {
+    outline: none;
+}
+
+form .dashboard-search-btn {
+    border: none;
+    height: 100%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form .dashboard-search-btn:hover {
+    background-color: #6b6b6b;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.dashboard-records {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1%;
+}
+
+.record-container {
+    width: 100%;
+    height: 17.5%;
+    background-color: #3B3B3B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000000;
+}
+
+.record-counter {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #6D6B6B;
+    color: #ffffff;
+}
+
+.record-details {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.record-details .top-record-details {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+
+.record-title {
+    width: 350px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: white;
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+.record-title:hover {
+    cursor: pointer;
+}
+
+.record-title:hover+.record-title-tooltip {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0.5s;
+}
+
+.record-title-tooltip {
+    position: absolute;
+    margin-bottom: 70px;
+    margin-left: 15px;
+    color: white;
+    background-color: #000000d0;
+    padding: 2px 5px;
+    border-radius: 5px;
+    visibility: hidden;
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.record-title-tooltip::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 30%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #000000 transparent transparent transparent;
+}
+
+.record-likes {
+    margin-left: 65px;
+    margin-right: auto;
+    font-size: 19px;
+    color: #9F9F9F;
+}
+
+.record-details .bottom-record-details {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.record-publisher {
+    margin-left: 20px;
+    color: white;
+    font-size: 17px;
+}
+
+.record-date {
+    margin-left: 30px;
+    margin-right: auto;
+    color: #9F9F9F;
+    font-size: 17px;
+}
+
+.record-edit-btn,
+.record-delete-btn {
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    height: 70%;
+    width: 90px;
+    margin-right: 20px;
+}
+
+.record-edit-btn {
+    background-color: #CDAC69;
+}
+
+.record-edit-btn:hover {
+    background-color: #ba9957;
+    cursor: pointer;
+}
+
+.record-delete-btn {
+    background-color: #805656;
+}
+
+.record-delete-btn:hover {
+    background-color: #6d4848;
+    cursor: pointer;
+}
+
+
+.pagination-container {
+    width: 100%;
+    height: 9.5vh;
+    border-top: 0.5vh solid #3B3B3B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination-container button {
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    margin: 0%;
+    padding: 0%;
+    width: 90px;
+    height: 30px;
+    font-family: "Century Gothic";
+}
+
+#out {
+    background-color: #3B3B3B;
+}
+
+#out:hover {
+    background-color: #282828;
+    cursor: pointer;
+}
+
+#in {
+    background-color: #6D6B6B;
+}
+
+#in:hover {
+    background-color: #5A5A5A;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+    .record-title {
+        width: 200px;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .record-likes {
+        margin-left: 20px;
+        font-size: 15px;
+    }
+
+    .record-publisher {
+        margin-left: 10px;
+        font-size: 15px;
+    }
+
+    .record-date {
+        display: none;
+    }
+
+    .record-delete-btn {
+        margin-left: auto;
+    }
+    .record-title-tooltip {
+        position: absolute;
+        margin-bottom: 60px;
+        margin-left: 0px;
+        margin-right: 5px;
+        color: white;
+        background-color: #000000d0;
+        padding: 2px 5px;
+        border-radius: 5px;
+        visibility: hidden;
+        font-size: 12px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .record-title-tooltip::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 20%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #000000 transparent transparent transparent;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .dashboard-nav span {
+        font-size: 33px;
+    }
+
+    .dashboard-nav .dashboard-search {
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .record-edit-btn,
+    .record-delete-btn {
+        font-size: 14px;
+        border-radius: 7px;
+        height: 60%;
+        width: 80px;
+        margin-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .dashboard-nav span {
+        font-size: 25px;
+    }
+
+    .dashboard-nav .dashboard-search {
+        width: 100px;
+    }
+    .record-counter {
+        width: 70px;
+    }
+    .record-likes {
+        margin-left: 10px;
+    }
+    .pagination-container button {
+        font-size: 13px;
+        width: 60px;
+        height: 25px;
+    }
+
+    .pagination-container {
+        gap: 5px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    
+    .record-counter {
+        width: 60px;
+    }
+    .record-likes {
+       display: none;
+    }
+    .record-edit-btn {
+        margin-left: auto;
+    }
+    .record-title {
+        width: 140px;
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    .record-publisher {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .dashboard-nav span {
+        font-size: 20px;
+    }
+
+    .pagination-container button {
+        font-size: 11px;
+        width: 50px;
+        height: 25px;
+    }
+}
