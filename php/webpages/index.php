@@ -4,19 +4,27 @@ $_SESSION['Page'] = "index.php";
 
 require "../controllers/funtions.php";
 
-if(isset($_GET['sort'])){
-    if($_GET['sort'] == 'latest'){
+if (isset($_GET['sort'])) {
+    if ($_GET['sort'] == 'latest') {
         $sort = "date_published DESC";
     }
-}
-else{
+} else {
     $sort = "RAND()";
 }
 
 $data = selectRecords($connection, "*", "blogs", '', '', $sort);
 $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DESC', '5');
 
-settingCookie();
+$user_likes = selectRecords($connection, "*", "likes", 'deviceID', $_COOKIE['device_id']);
+
+$blogID_likes = array();
+
+while ($row = mysqli_fetch_assoc($user_likes)) {
+    $blogID_likes[] = $row['blogID'];
+    echo "BlogID: " . $row['blogID'] . " DeviceID: " . $row['deviceID'] . "</br>";
+}
+
+$blogID_likes_js = json_encode($blogID_likes);
 
 ?>
 
@@ -34,6 +42,14 @@ settingCookie();
     <script defer src="../../js/js_index.js"></script>
     <script defer src="../../js/js_header.js"></script>
     <script defer src="../../js/jquery.min.js"></script>
+    <script defer>
+        var blogIDLikes = <?php echo $blogID_likes_js; ?>;
+        window.addEventListener('load', function() {
+            <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+                checkLikeBlog(<?php echo $row['blogID']; ?>);
+            <?php } ?>
+        });
+    </script>
     <link rel="icon" href="../../images/icon.png">
     <title>Kuilt.</title>
     <style>
@@ -76,7 +92,7 @@ settingCookie();
         <div class="page-container">
             <div class="head-wrap" id="for-you">
                 <p class="blog-head-title">Blogs for you</p>
-                <a href="?sort=latest" style="margin-left: auto; <?php if(isset($_GET['sort'] ) == 'latest') echo 'background-color: #3d3d3d;';?> " class="blog-sort">Latest</a>
+                <a href="?sort=latest" style="margin-left: auto; <?php if (isset($_GET['sort']) == 'latest') echo 'background-color: #3d3d3d;'; ?> " class="blog-sort">Latest</a>
                 <a href="" style="margin-left: 5px;" class="blog-sort">Most Likes</a>
             </div>
             <div class="blogs-wrap">
@@ -123,7 +139,7 @@ settingCookie();
                 </div>
                 <p style="padding: 0; margin: 0;">© 2024 Kuilt. Team. All rights reserved.</p>
             </div>
-            
+
         </div>
     </div>
 </body>

@@ -82,6 +82,7 @@ function zoomOut() {
     img.style.maxHeight = newHeight + "px"; 
 }
 
+console.log(blogIDLikes);//id of the blogs na may like
 
 function handleCheckboxClick(blogID) {
     console.log('Clicked on blogID ' + blogID);
@@ -99,6 +100,18 @@ function handleCheckboxClick(blogID) {
         likebtn.classList.add('bi-hand-thumbs-up');
     }
 
+}
+
+
+
+function checkLikeBlog(blogID) {
+    console.log('BlogID ' + blogID);
+    for(var i = 0; i < blogIDLikes.length; i++) {
+        if(blogIDLikes[i] == blogID) {
+            console.log("pare: ");
+            console.log(blogIDLikes[i]);
+        }
+    }
 }
 
 function addLike(blogID){

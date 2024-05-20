@@ -80,6 +80,5 @@
             setcookie('device_id', $uniqueId, time() + (365 * 24 * 60 * 60), '/');
             header("Location: ../Index.php");
         }
-        echo "Device ID: " . $_COOKIE['device_id'];
     }
 ?>
