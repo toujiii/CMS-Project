@@ -21,7 +21,6 @@ $blogID_likes = array();
 
 while ($row = mysqli_fetch_assoc($user_likes)) {
     $blogID_likes[] = $row['blogID'];
-    echo "BlogID: " . $row['blogID'] . " DeviceID: " . $row['deviceID'] . "</br>";
 }
 
 $blogID_likes_js = json_encode($blogID_likes);
@@ -44,11 +43,6 @@ $blogID_likes_js = json_encode($blogID_likes);
     <script defer src="../../js/jquery.min.js"></script>
     <script defer>
         var blogIDLikes = <?php echo $blogID_likes_js; ?>;
-        window.addEventListener('load', function() {
-            <?php while ($row = mysqli_fetch_assoc($data)) { ?>
-                checkLikeBlog(<?php echo $row['blogID']; ?>);
-            <?php } ?>
-        });
     </script>
     <link rel="icon" href="../../images/icon.png">
     <title>Kuilt.</title>
@@ -96,7 +90,14 @@ $blogID_likes_js = json_encode($blogID_likes);
                 <a href="" style="margin-left: 5px;" class="blog-sort">Most Likes</a>
             </div>
             <div class="blogs-wrap">
-                <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+                <?php while ($row = mysqli_fetch_assoc($data)) {
+                    $blogID = $row['blogID'];
+                    echo "<script>";
+                    echo "window.addEventListener('load', function() {";
+                    echo "    checkLikeBlog($blogID);";
+                    echo "});";
+                    echo "</script>";
+                ?>
                     <div class="blog-con">
                         <div class="blog-info">
                             <div class="blog-title">

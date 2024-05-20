@@ -62,8 +62,8 @@ function closeImageView() {
 function zoomIn() {
     console.log('zoom');
     let img = document.getElementById('img-con').querySelector('img');
-    let currentZoom = parseFloat(img.style.minHeight) || 650; 
-    let newZoom = currentZoom + 150; 
+    let currentZoom = parseFloat(img.style.minHeight) || 650;
+    let newZoom = currentZoom + 150;
     if (newZoom > 3000) {
         newZoom = 3000;
     }
@@ -73,13 +73,13 @@ function zoomIn() {
 }
 function zoomOut() {
     let img = document.getElementById('img-con').querySelector('img');
-    let currentHeight = parseFloat(img.style.minHeight) || 650; 
-    let newHeight = currentHeight - 150; 
-    if (newHeight < 650) { 
+    let currentHeight = parseFloat(img.style.minHeight) || 650;
+    let newHeight = currentHeight - 150;
+    if (newHeight < 650) {
         newHeight = 650;
     }
-    img.style.minHeight = newHeight + "px"; 
-    img.style.maxHeight = newHeight + "px"; 
+    img.style.minHeight = newHeight + "px";
+    img.style.maxHeight = newHeight + "px";
 }
 
 console.log(blogIDLikes);//id of the blogs na may like
@@ -88,42 +88,51 @@ function handleCheckboxClick(blogID) {
     console.log('Clicked on blogID ' + blogID);
     var likebtn = document.getElementById('btn-like' + blogID);
     var checkbox = document.getElementById('like-btn-' + blogID);
+    for (var i = 0; i < blogIDLikes.length; i++) {
+        if (blogIDLikes[i] == blogID) {
+            checkbox.checked = true;
+        }
+    }
     if (!checkbox.checked) {
         console.log('Checkbox with blogID ' + blogID + ' is checked');
         likebtn.classList.remove('bi-hand-thumbs-up');
         likebtn.classList.add('bi-hand-thumbs-up-fill');
         addLike(blogID);
-        
+
     } else {
         console.log('Checkbox with blogID ' + blogID + ' is unchecked');
         likebtn.classList.remove('bi-hand-thumbs-up-fill');
         likebtn.classList.add('bi-hand-thumbs-up');
+        //new function ulit para naman sa delete ajax gamitin ----
     }
 
 }
 
 
-
 function checkLikeBlog(blogID) {
-    console.log('BlogID ' + blogID);
-    for(var i = 0; i < blogIDLikes.length; i++) {
-        if(blogIDLikes[i] == blogID) {
+    for (var i = 0; i < blogIDLikes.length; i++) {
+        if (blogIDLikes[i] == blogID) {
             console.log("pare: ");
             console.log(blogIDLikes[i]);
+            var likebtn = document.getElementById('btn-like' + blogIDLikes[i]);
+            var checkbox = document.getElementById('like-btn-' + blogIDLikes[i]);
+            checkbox.checked = false;
+            likebtn.classList.remove('bi-hand-thumbs-up');
+            likebtn.classList.add('bi-hand-thumbs-up-fill');
         }
     }
 }
 
-function addLike(blogID){
+function addLike(blogID) {
     $.ajax({
-        url: '../webpages/importLike.php', 
-        method: 'POST', 
-        data: { id: blogID  }, 
-        success: function(response){
+        url: '../webpages/importLike.php',
+        method: 'POST',
+        data: { id: blogID },
+        success: function (response) {
 
             console.log('Response from server:', response);
         },
-        error: function(error){
+        error: function (error) {
             console.error('Error:', error);
         }
     });
