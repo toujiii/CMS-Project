@@ -34,10 +34,7 @@ settingCookie();
     <link rel="stylesheet" href="../../bootstrap-icons/font/bootstrap-icons.min.css">
     <script defer src="../../js/js_index.js"></script>
     <script defer src="../../js/js_header.js"></script>
-<<<<<<< HEAD
     <script defer src="../../js/jquery.min.js"></script>
-=======
->>>>>>> cc2387ab8804062584fbdd236cab1a4c6cb3624f
     <link rel="icon" href="../../images/icon.png">
     <title>Kuilt.</title>
     <style>
