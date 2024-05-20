@@ -17,7 +17,7 @@ $data = selectRecords($connection, "*", "blogs", '', '', $sort);
 $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DESC', '5');
 
 settingCookie();
-
+//osdf
 
 ?>
 
