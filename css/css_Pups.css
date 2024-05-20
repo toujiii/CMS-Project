@@ -1,0 +1,322 @@
+/*----------------------------------- Admin Delete Pup --------------------------------------------*/
+.pup-container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.494);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.19s ease;
+}
+
+.pup-box{
+    width: 400px;
+    height: 200px;
+    background-color: #D0CABA;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.422);
+    border-radius: 10px;
+    border: 2px solid #3B3B3B;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scale: 80%;
+    transition: scale 0.19s ease;
+}
+
+.pup-head{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    font-size: 20px;
+    color: #292929;
+    border-bottom: 4px solid #3B3B3B;
+}
+
+.pup-options{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pup-options button{
+    width: 150px;
+    height: 40px;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.pup-options #cancel{
+    background-color: #9F9F9F;
+}
+
+.pup-options #cancel:hover{
+    background-color: #848282;
+}
+
+.pup-options #delete{
+    background-color: #805656;
+}
+
+.pup-options #delete:hover{
+    background-color: #663d3d;
+}
+
+.pup-options #continue{
+    background-color: #14724F;
+}
+
+.pup-options #continue:hover{
+    background-color: #0e5239;
+}
+
+.pup-options #continued{
+    background-color: #6D6B6B;
+}
+
+.pup-options #continued:hover{
+    background-color: #535252;
+}
+
+.view-image-body{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.802);
+    z-index: 1100;
+    backdrop-filter: blur(3px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    visibility: hidden;
+}
+
+.close-container{
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: auto;
+}
+
+.close-container button:hover{
+    cursor: pointer;
+    color: rgb(176, 176, 176);
+}
+
+.close-container button{
+    font-size: 30px;
+    background-color: #29292900;
+    color: white;
+    border: none;
+    margin-left: 30px;
+}
+
+.view-img-con{
+    width: fit-content;
+    max-width: 95%;
+    height: 88vh;
+    overflow: auto;
+    display: flex;
+
+    padding: 0;
+}
+
+.view-img-con::-webkit-scrollbar {
+    width: 0; 
+    background: transparent; 
+}
+
+.view-img-con img{
+    width: auto;
+    height: 100%;
+    min-height: 650px;
+    max-height: 650px;
+    object-fit: cover;
+    margin: auto;
+    transition: max-height 0.3s ease, min-height 0.3s ease;
+}
+
+.zoom-control{
+    width: 100%;
+    height: 6vh;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.zoom-control button{
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: #76171700;
+    border: none;
+    font-size: 25px;
+}
+
+.zoom-control button:hover{
+    color: rgb(201, 201, 201);
+}
+
+@media only screen and (max-width: 600px) {
+    .pup-head{
+        font-size: 16px;
+    }
+    .pup-options button {
+        font-size: 15px;
+        width: 100px;
+        height: 30px;
+    }
+    .pup-box {
+        width: 320px;
+        height: 150px;
+    }
+}
+
+/*----------------------------------- Admin sidebar --------------------------------------------*/
+
+.admin-sidebar{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.494);
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-con{
+    width: 300px;
+    min-height: 100vh;
+    background-color: #3B3B3B;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.422);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    left: -50%;
+    transition: left 0.3s ease;
+}
+
+.logo-con{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-con img{
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+
+.side-void{
+    flex: 1;
+    min-height: 100vh;
+}
+
+.sidebar-con a{
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    background-color: #4D4D4D;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: font-size 0.2s ease;
+}
+
+.sidebar-con a:hover{
+    background-color: #6D6B6B;
+    font-size: 18px;
+}
+
+#logout{
+    width: 100%;
+    height: 50px;
+    background-color: #202020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 5vh;
+    transition: background-color 0.2s ease,font-size 0.2s ease;
+}
+
+#logout:hover{
+    background-color: #D84A4A;
+}
+
+
+@media only screen and (max-width: 1220px) {
+    .view-img-con img{
+        min-height: 500px;
+        max-height: 500px;
+    }
+}
+@media only screen and (max-width: 950px) {
+    .view-img-con img{
+        min-height: 400px;
+        max-height: 400px;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .view-img-con img{
+        min-height: 300px;
+        max-height: 300px;
+    }
+}
+@media only screen and (max-width: 560px) {
+    .view-img-con img{
+        min-height: 200px;
+        max-height: 200px;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .sidebar-con{
+        width: 250px;
+    }
+    .logo-con img {
+        width: 150px;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 400px) {
+    .sidebar-con{
+        width: 200px;
+    }
+}
