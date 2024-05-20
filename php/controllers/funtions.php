@@ -73,7 +73,6 @@
         }
     }
 
-<<<<<<< HEAD
     function settingCookie(){
         $uniqueId = uniqid();
 
@@ -83,9 +82,4 @@
         }
         echo "Device ID: " . $_COOKIE['device_id'];
     }
-
-=======
->>>>>>> cc2387ab8804062584fbdd236cab1a4c6cb3624f
-    
-
 ?>
