@@ -24,7 +24,7 @@ body {
 
 
 .profile-section1{
-    margin: 10svh auto 0 0;
+    margin: 8svh auto 0 0;
 
     width: 60%;
     display: flex;
@@ -118,6 +118,7 @@ body {
 
 .profile-contents{
     align-self: start;
+    width: 100%;
 }
 
 .profile-contents p{
@@ -265,6 +266,39 @@ body {
 .bottom-con a:hover {
     background-color: #4D4D4D;
 }
+
+.navigation{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    
+}
+
+.navigation p{
+    margin: 0%;
+}
+
+.navigation .nav-title{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.navigation a{
+    font-size: 15px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.navigation a:hover{
+    text-decoration: underline;
+}
+
 
 @media only screen and (max-width: 1200px) {
     .profile-section1, .profile-section2, .profile-section3{

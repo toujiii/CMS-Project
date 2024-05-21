@@ -11,9 +11,9 @@ if (isset($_GET['sort'])) {
 } else {
     $sort = "RAND()";
 }
-
+settingCookie();
 $data = selectRecords($connection, "*", "blogs", '', '', $sort);
-$popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DESC', '5');
+$popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DESC', '10');
 
 
 ?>
@@ -29,6 +29,7 @@ $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DE
     <link rel="stylesheet" href="../../css/css_footer.css">
     <link rel="stylesheet" href="../../css/css_Pups.css">
     <link rel="stylesheet" href="../../bootstrap-icons/font/bootstrap-icons.min.css">
+    
     <script defer src="../../js/js_index.js"></script>
     <script defer src="../../js/js_header.js"></script>
     <script src="../../js/jquery.min.js"></script>

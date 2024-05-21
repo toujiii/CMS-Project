@@ -10,7 +10,7 @@ window.onscroll = () => {
     if (scrollTop >= contentHeight - viewportHeight + sidebarTop) {
         sidebar_content.style.transform = `translateY(-${contentHeight - viewportHeight + sidebarTop}px)`;
         sidebar_content.style.position = "fixed";
-        sidebar_content.style.marginTop = "70px";
+        sidebar_content.style.marginTop = "65px";
 
     }
     else {
@@ -92,8 +92,11 @@ function handleLikedBlogs(){
             console.log('Data received:', response);
             transferResponse(response);
         },
-        error: function(status, error) {
-            console.error('AJAX Error:', status, error);
+        error: function(xhr, status, error) {
+            console.error('AJAX Error:', xhr.status, xhr.statusText);
+            console.error('Response Text:', xhr.responseText);
+            console.error('Status:', status);
+            console.error('Error:', error);
         }
     });
 }
@@ -106,6 +109,18 @@ function transferResponse(data) {
 
 handleLikedBlogs();
 
+function checkLikeBlog(blogID) {
+    for (var i = 0; i < blogIDLikes.length; i++) {
+        if (blogIDLikes[i] == blogID) {
+            console.log("found: " + blogIDLikes[i]);
+            var likebtn = document.getElementById('btn-like' + blogIDLikes[i]);
+            var checkbox = document.getElementById('like-btn-' + blogIDLikes[i]);
+            checkbox.checked = false;
+            likebtn.classList.remove('bi-hand-thumbs-up');
+            likebtn.classList.add('bi-hand-thumbs-up-fill');
+        }
+    }
+}
 
 
 function handleCheckboxClick(blogID) {
@@ -133,18 +148,6 @@ function handleCheckboxClick(blogID) {
 }
 
 
-function checkLikeBlog(blogID) {
-    for (var i = 0; i < blogIDLikes.length; i++) {
-        if (blogIDLikes[i] == blogID) {
-            console.log("found: " + blogIDLikes[i]);
-            var likebtn = document.getElementById('btn-like' + blogIDLikes[i]);
-            var checkbox = document.getElementById('like-btn-' + blogIDLikes[i]);
-            checkbox.checked = false;
-            likebtn.classList.remove('bi-hand-thumbs-up');
-            likebtn.classList.add('bi-hand-thumbs-up-fill');
-        }
-    }
-}
 
 
 function addLike(blogID) {

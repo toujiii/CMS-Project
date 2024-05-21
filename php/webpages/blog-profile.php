@@ -53,6 +53,11 @@ $_SESSION['blog_id'] = "?id=$id"
 
     <div class="profile-section1">
         <div class="blog-profile-title">
+            <div class="navigation">
+                <a href="index.php">Home</a>
+                <p style="font-size: 15px;">&nbsp;>&nbsp;</p>
+                <a class="nav-title" href="blog-profile.php?id=<?php echo $id; ?>"><?php echo $blog_data['title']; ?></a>
+            </div>
             <p><?php echo $blog_data['title']; ?></p>
             <span class="bi-clock"> <?php echo $blog_data['date_published']; ?></span>
         </div>
