@@ -82,7 +82,31 @@ function zoomOut() {
     img.style.maxHeight = newHeight + "px";
 }
 
-console.log(blogIDLikes);//id of the blogs na may like
+
+function handleLikedBlogs(){
+    $.ajax({
+        url: '../controllers/fetchLikeBlogs.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            console.log('Data received:', response);
+            transferResponse(response);
+        },
+        error: function(status, error) {
+            console.error('AJAX Error:', status, error);
+        }
+    });
+}
+
+
+var blogIDLikes = [];
+function transferResponse(data) {
+    blogIDLikes = data.slice();
+}
+
+handleLikedBlogs();
+
+
 
 function handleCheckboxClick(blogID) {
     console.log('Clicked on blogID ' + blogID);
@@ -91,7 +115,7 @@ function handleCheckboxClick(blogID) {
     for (var i = 0; i < blogIDLikes.length; i++) {
         if (blogIDLikes[i] == blogID) {
             checkbox.checked = true;
-        }
+        } 
     }
     if (!checkbox.checked) {
         console.log('Checkbox with blogID ' + blogID + ' is checked');
@@ -103,7 +127,7 @@ function handleCheckboxClick(blogID) {
         console.log('Checkbox with blogID ' + blogID + ' is unchecked');
         likebtn.classList.remove('bi-hand-thumbs-up-fill');
         likebtn.classList.add('bi-hand-thumbs-up');
-        //new function ulit para naman sa delete ajax gamitin ----
+        deleteLike(blogID);
     }
 
 }
@@ -112,8 +136,7 @@ function handleCheckboxClick(blogID) {
 function checkLikeBlog(blogID) {
     for (var i = 0; i < blogIDLikes.length; i++) {
         if (blogIDLikes[i] == blogID) {
-            console.log("pare: ");
-            console.log(blogIDLikes[i]);
+            console.log("found: " + blogIDLikes[i]);
             var likebtn = document.getElementById('btn-like' + blogIDLikes[i]);
             var checkbox = document.getElementById('like-btn-' + blogIDLikes[i]);
             checkbox.checked = false;
@@ -123,13 +146,30 @@ function checkLikeBlog(blogID) {
     }
 }
 
+
 function addLike(blogID) {
     $.ajax({
-        url: '../webpages/importLike.php',
+        url: '../controllers/importLike.php',
         method: 'POST',
         data: { id: blogID },
         success: function (response) {
+            handleLikedBlogs();
+            console.log('Response from server:', response);
+        },
+        error: function (error) {
+            console.error('Error:', error);
+        }
+    });
+}
 
+function deleteLike(blogID) {
+    console.log("deleting...");
+    $.ajax({
+        url: '../controllers/removeLike.php',
+        method: 'POST',
+        data: { id: blogID },
+        success: function (response) {
+            handleLikedBlogs();
             console.log('Response from server:', response);
         },
         error: function (error) {

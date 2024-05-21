@@ -15,15 +15,6 @@ if (isset($_GET['sort'])) {
 $data = selectRecords($connection, "*", "blogs", '', '', $sort);
 $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DESC', '5');
 
-$user_likes = selectRecords($connection, "*", "likes", 'deviceID', $_COOKIE['device_id']);
-
-$blogID_likes = array();
-
-while ($row = mysqli_fetch_assoc($user_likes)) {
-    $blogID_likes[] = $row['blogID'];
-}
-
-$blogID_likes_js = json_encode($blogID_likes);
 
 ?>
 
@@ -40,10 +31,7 @@ $blogID_likes_js = json_encode($blogID_likes);
     <link rel="stylesheet" href="../../bootstrap-icons/font/bootstrap-icons.min.css">
     <script defer src="../../js/js_index.js"></script>
     <script defer src="../../js/js_header.js"></script>
-    <script defer src="../../js/jquery.min.js"></script>
-    <script defer>
-        var blogIDLikes = <?php echo $blogID_likes_js; ?>;
-    </script>
+    <script src="../../js/jquery.min.js"></script>
     <link rel="icon" href="../../images/icon.png">
     <title>Kuilt.</title>
     <style>

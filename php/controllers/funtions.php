@@ -46,6 +46,38 @@
             return false; 
         }
     }
+
+    function deleteRecords($connection, $tbl, $conditions = []) {
+        $sql = "DELETE FROM $tbl";
+        if (!empty($conditions)) {
+            $sql .= " WHERE ";
+            $conditionStrings = [];
+            $params = [];
+            $types = '';
+    
+            foreach ($conditions as $column => $value) {
+                $conditionStrings[] = "$column = ?";
+                $params[] = $value;
+                $types .= is_numeric($value) ? 'i' : 's';
+            }
+    
+            $sql .= implode(' AND ', $conditionStrings);
+        }
+        $stmt = mysqli_prepare($connection, $sql);
+    
+        if ($stmt) {
+            if (!empty($conditions)) {
+                mysqli_stmt_bind_param($stmt, $types, ...$params);
+            }
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+    
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     
 
     function selectRecords($connection, $column, $tbl, $whereColumn = null, $whereValue = null, $order = null, $limit = null) {
