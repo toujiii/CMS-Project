@@ -43,6 +43,7 @@ $_SESSION['blog_id'] = "?id=$id"
     <link rel="stylesheet" href="../../bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../css/css_Pups.css">
     <link rel="icon" href="../../images/icon.png">
+    <script defer src="../../js/js_search.js"></script>
     <script defer src="../../js/jquery.min.js"></script>
     <script defer src="../../js/js_header.js"></script>
     <script defer src="../../js/js_blog_profile.js"></script>

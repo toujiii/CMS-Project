@@ -7,12 +7,10 @@ $popular_menu_blogs = selectRecords($connection, "*", "blogs", '', '', 'populari
     <a class="home-nav bi-house" href="index.php"> Home</a>
     <div class="search-body">
         <div class="search-box">
-            <input type="text" placeholder="Search for a blog">
+            <input id="head-search" type="text" placeholder="Search for a blog" onkeyup="searching('head-search')">
             <span class="bi-search"></span>
         </div>
-        <div class="results">
-            <!-- <p>asdasd</p> -->
-        </div>
+        <div id="head-search-result" class="results"></div>
 
     </div>
     <a class="authorize-nav" href="../webpages/admin-login.php">Authorize</a>
@@ -26,10 +24,10 @@ $popular_menu_blogs = selectRecords($connection, "*", "blogs", '', '', 'populari
         <span class="arrow bi-arrow-left" onclick="closeMenuBurger()"></span>
         <div class="menu-search-body">
             <div class="menu-search-box">
-                <input type="text" placeholder="Search for a blog">
+                <input id="menu-search" type="text" placeholder="Search for a blog" onkeyup="searching('menu-search')">
                 <span class="bi-search"></span>
             </div>
-            <div class="menu-results">
+            <div id="menu-search-result" class="menu-results">
                 <!-- <p>asdasd</p> -->
             </div>
 

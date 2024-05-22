@@ -9,7 +9,7 @@ if (isset($_POST['name'])) {
 
     if (mysqli_num_rows($query) > 0) {
         while ($row = $query->fetch_assoc()) {
-            echo '<a href="blog-profile.php?id=' . $row["blogID"] . '">' . $row["title"] . '<p>' . $row["publisher"] . '</p>' . '</a>';
+            echo '<a href="blog-profile.php?id=' . $row["blogID"] . '">' . $row["title"] . '<p>By: ' . $row["publisher"] . '</p>' . '</a>';
         }
     }
     else {

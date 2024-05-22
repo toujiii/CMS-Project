@@ -36,9 +36,15 @@ window.addEventListener('scroll', function () {
     if (window.scrollY > 550) {
         navBar.style.visibility = 'visible'; // Show the element when scrolled more than 100vh
         navBar.style.opacity = '1';
+        $(search).val('');
+        $('#search-result').html('');
+        $('#search-result').css('padding', '0px 0px');
     } else {
         navBar.style.visibility = 'hidden'; // Hide the element otherwise
         navBar.style.opacity = '0';
+        $(head_search).val('');
+        $('#head-search-result').html('');
+        $('#head-search-result').css('padding', '0px 0px');
     }
 });
 
@@ -83,16 +89,16 @@ function zoomOut() {
 }
 
 
-function handleLikedBlogs(){
+function handleLikedBlogs() {
     $.ajax({
         url: '../controllers/fetchLikeBlogs.php',
         type: 'GET',
         dataType: 'json',
-        success: function(response) {
+        success: function (response) {
             console.log('Data received:', response);
             transferResponse(response);
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error('AJAX Error:', xhr.status, xhr.statusText);
             console.error('Response Text:', xhr.responseText);
             console.error('Status:', status);
@@ -131,7 +137,7 @@ function handleCheckboxClick(blogID) {
     for (var i = 0; i < blogIDLikes.length; i++) {
         if (blogIDLikes[i] == blogID) {
             checkbox.checked = true;
-        } 
+        }
     }
     if (!checkbox.checked) {
         console.log('Checkbox with blogID ' + blogID + ' is checked');

@@ -65,7 +65,7 @@ $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DE
             <div class="search-head">
                 <div class="search-boxing">
                     <div class="search-input">
-                        <input id="search" type="text" placeholder="Search for a blog" onkeyup="searching()" autocomplete="off"><span class="bi-search"></span>
+                        <input id="search" type="text" placeholder="Search for a blog" onkeyup="searching('top-search')" autocomplete="off"><span class="bi-search"></span>
                     </div>
                     <div id="search-result"></div>
                 </div>

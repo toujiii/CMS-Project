@@ -100,11 +100,27 @@
 
 
 .results {
-    width: 100%;
+    width: 90%;
     height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 15px;
+}
+
+.results a{
+    text-decoration: none;
+    color: #3B3B3B;
+    font-weight: bold;
+}
+
+.results a:hover{
+    text-decoration: underline;
+}
+
+.results p{
+    margin: 0%;
+    font-size: 12px;
 }
 
 .menu-nav {
@@ -212,11 +228,27 @@
 
 
 .menu-results {
-    width: 100%;
+    width: 90%;
     height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 15px;
+}
+
+.menu-results a{
+    text-decoration: none;
+    color: #3B3B3B;
+    font-weight: bold;
+}
+
+.menu-results a:hover{
+    text-decoration: underline;
+}
+
+.menu-results p{
+    margin: 0%;
+    font-size: 12px;
 }
 
 .burger-home {
