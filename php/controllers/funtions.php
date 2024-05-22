@@ -113,4 +113,9 @@
             header("Location: ../Index.php");
         }
     }
+
+    function getTotalLikes($connection, $blogID){
+        $user_likes = mysqli_fetch_assoc(selectRecords($connection, "COUNT(*) as total", "likes", 'blogID', $blogID));
+        return $user_likes['total'];
+    }
 ?>

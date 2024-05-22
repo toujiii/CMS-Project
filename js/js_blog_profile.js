@@ -2,7 +2,7 @@ let content_section = document.getElementById('content-section');
 let description = document.getElementById('description');
 let expand = document.getElementById('expand');
 
-function expandDescription(){
+function expandDescription() {
     console.log('expandDescription');
     content_section.style.height = "fit-content";
     content_section.style.overflow = "auto";
@@ -37,8 +37,8 @@ function closeImageView() {
 function zoomIn() {
     console.log('zoom');
     let img = document.getElementById('img-con').querySelector('img');
-    let currentZoom = parseFloat(img.style.minHeight) || 650; 
-    let newZoom = currentZoom + 150; 
+    let currentZoom = parseFloat(img.style.minHeight) || 650;
+    let newZoom = currentZoom + 150;
     if (newZoom > 3000) {
         newZoom = 3000;
     }
@@ -48,11 +48,57 @@ function zoomIn() {
 }
 function zoomOut() {
     let img = document.getElementById('img-con').querySelector('img');
-    let currentHeight = parseFloat(img.style.minHeight) || 650; 
-    let newHeight = currentHeight - 150; 
-    if (newHeight < 650) { 
+    let currentHeight = parseFloat(img.style.minHeight) || 650;
+    let newHeight = currentHeight - 150;
+    if (newHeight < 650) {
         newHeight = 650;
     }
-    img.style.minHeight = newHeight + "px"; 
-    img.style.maxHeight = newHeight + "px"; 
+    img.style.minHeight = newHeight + "px";
+    img.style.maxHeight = newHeight + "px";
+}
+
+
+function handleCheckboxClick(blogID) {
+    var likebtn = document.getElementById('btn-like');
+    var checkbox = document.getElementById('like-btn');
+    if (!checkbox.checked) {
+        console.log('Liked');
+        likebtn.classList.remove('bi-hand-thumbs-up');
+        likebtn.classList.add('bi-hand-thumbs-up-fill');
+        addLike(blogID);
+    } else {
+        console.log('unliked');
+        likebtn.classList.remove('bi-hand-thumbs-up-fill');
+        likebtn.classList.add('bi-hand-thumbs-up');
+        deleteLike(blogID);
+    }
+}
+
+function addLike(blogID) {
+    $.ajax({
+        url: '../controllers/importLike.php',
+        method: 'POST',
+        data: { id: blogID },
+        success: function (response) {
+            console.log('Response from server:', response);
+        },
+        error: function (error) {
+            console.error('Error:', error);
+        }
+    });
+}
+
+function deleteLike(blogID) {
+    console.log("deleting...");
+    $.ajax({
+        url: '../controllers/removeLike.php',
+        method: 'POST',
+        data: { id: blogID },
+        success: function (response) {
+            console.log('Response from server:', response);
+        },
+        error: function (error) {
+            console.error('Error:', error);
+        }
+    });
 }

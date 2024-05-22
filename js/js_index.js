@@ -118,6 +118,7 @@ function checkLikeBlog(blogID) {
             checkbox.checked = false;
             likebtn.classList.remove('bi-hand-thumbs-up');
             likebtn.classList.add('bi-hand-thumbs-up-fill');
+            likebtn.innerHTML = '&nbsp;Liked';
         }
     }
 }
@@ -137,12 +138,13 @@ function handleCheckboxClick(blogID) {
         likebtn.classList.remove('bi-hand-thumbs-up');
         likebtn.classList.add('bi-hand-thumbs-up-fill');
         addLike(blogID);
-
+        likebtn.innerHTML = '&nbsp;Liked';
     } else {
         console.log('Checkbox with blogID ' + blogID + ' is unchecked');
         likebtn.classList.remove('bi-hand-thumbs-up-fill');
         likebtn.classList.add('bi-hand-thumbs-up');
         deleteLike(blogID);
+        likebtn.innerHTML = '&nbsp;Like';
     }
 
 }

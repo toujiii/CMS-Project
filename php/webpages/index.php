@@ -97,7 +97,7 @@ $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DE
                             </div>
                             <div class="blog-other-info">
                                 <p class="bi-person-fill"> <?php echo $row['publisher']; ?></p>
-                                <p class="bi-hand-thumbs-up-fill"> </p>
+                                <p class="bi-hand-thumbs-up-fill">&nbsp;<?php echo getTotalLikes($connection, $row['blogID']); ?></p>
                             </div>
                             <div class="blog-img-con">
                                 <img src="../../blog-images/blog-<?php echo $row['blogID']; ?>/cover.png" alt="" onclick="openImageView('<?php echo $row['blogID']; ?>')">

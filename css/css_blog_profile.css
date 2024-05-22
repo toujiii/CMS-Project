@@ -55,11 +55,28 @@ body {
     width: 100%;
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
-.blog-profile-details p{
+.blog-profile-details p, label{
     font-size:20px;
+    margin: 20px 0;
+    cursor: pointer;
+    user-select: none;
 }
+
+.blog-profile-details label{
+    background-color:#4D4D4D;
+    color: white;
+    padding: 5px 7px;
+    border-radius: 5px;
+}
+
+.blog-profile-details label:hover{
+    background-color: #3d3d3d;
+}
+
+
 .profile-gap{
     width: 100%;
     height: 4px;
@@ -299,6 +316,11 @@ body {
     text-decoration: underline;
 }
 
+#like-btn{
+    visibility: hidden;
+    user-select: none;
+}
+
 
 @media only screen and (max-width: 1200px) {
     .profile-section1, .profile-section2, .profile-section3{
@@ -371,7 +393,7 @@ body {
     .blog-profile-title p {
         font-size: 25px;
     }
-    .blog-profile-details p{
+    .blog-profile-details p, label{
         font-size: 15px;
     }
     .blog-profile-title span{
