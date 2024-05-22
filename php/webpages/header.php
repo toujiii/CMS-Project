@@ -1,3 +1,7 @@
+<?php
+$popular_menu_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DESC', '5');
+?>
+
 <div class="nav-bar" id="nav-bar">
     <img src="../../images/full-logo.png" alt="">
     <a class="home-nav bi-house" href="index.php"> Home</a>
@@ -31,19 +35,21 @@
 
         </div>
     </div>
-    <a class="burger-home" href="../webpages/index.php"><p class="bi-house"> Home</p></a>
-    <a class="burger-authorize" href="../webpages/admin-login.php"><p class="bi-door-open"> Authorize</p></a>
+    <a class="burger-home" href="../webpages/index.php">
+        <p class="bi-house"> Home</p>
+    </a>
+    <a class="burger-authorize" href="../webpages/admin-login.php">
+        <p class="bi-door-open"> Authorize</p>
+    </a>
     <div class="popular-menu">
         <div class="popular-menu-title">
             <p>Popular blogs</p>
         </div>
         <div class="popular-gap"></div>
         <div class="popular-menu-contents">
-            <a class="popular-menu-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
-            <a class="popular-menu-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
-            <a class="popular-menu-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
-            <a class="popular-menu-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
-            <a class="popular-menu-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
+            <?php while ($row = mysqli_fetch_assoc($popular_menu_blogs)) { ?>
+                <a class="popular-menu-link" href="blog-profile.php?id=<?php echo  $row['blogID']; ?>"><?php echo $row['title']; ?></a>
+            <?php } ?>
         </div>
     </div>
 </div>

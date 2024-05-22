@@ -29,7 +29,7 @@ $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DE
     <link rel="stylesheet" href="../../css/css_footer.css">
     <link rel="stylesheet" href="../../css/css_Pups.css">
     <link rel="stylesheet" href="../../bootstrap-icons/font/bootstrap-icons.min.css">
-    
+    <script defer src="../../js/js_search.js"></script>
     <script defer src="../../js/js_index.js"></script>
     <script defer src="../../js/js_header.js"></script>
     <script src="../../js/jquery.min.js"></script>
@@ -65,8 +65,9 @@ $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DE
             <div class="search-head">
                 <div class="search-boxing">
                     <div class="search-input">
-                        <input type="text" placeholder="Search for a blog"><span class="bi-search"></span>
+                        <input id="search" type="text" placeholder="Search for a blog" onkeyup="searching()" autocomplete="off"><span class="bi-search"></span>
                     </div>
+                    <div id="search-result"></div>
                 </div>
             </div>
         </div>
