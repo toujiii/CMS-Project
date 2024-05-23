@@ -1,9 +1,8 @@
 <?php
-$id = "1001";
-$title = "Exploring the Intersection of Art and Technology: A Journey Through Creativity";
-$publisher = "Gareth Manzano";
-$date = "2024-05-14  13:04:56";
-$likes = "100";
+require "../controllers/funtions.php";
+
+$data = selectRecords($connection, "*", "blogs");
+$count = mysqli_num_rows($data);
 
 ?>
 
@@ -19,6 +18,8 @@ $likes = "100";
     <link rel="icon" href="../../images/icon.png">
     <link rel="stylesheet" href="../webpages/Pups.php">
     <script defer src="../../js/js_admin_dashboard.js"></script>
+    <script id="count" counted="<?php echo $count; ?>"></script>
+    <script src="../../js/jquery.min.js"></script>
     <title>Admin Dashboard</title>
 </head>
 
@@ -35,109 +36,18 @@ $likes = "100";
             <div class="dashboard-nav">
                 <span>Blog Records</span>
                 <form action="">
-                    <input class="dashboard-search" placeholder="Search a blog" type="text">
+                    <input class="dashboard-search" placeholder="Search a blog" type="text" id="search" autocomplete="off">
                     <button class="dashboard-search-btn bi-search" type="submit"></button>
                 </form>
             </div>
-            <div class="dashboard-records">
-                <div class="record-container">
-                    <div class="record-counter">
-                        <span style="font-weight: bold; font-size: 16px;">#1 </span>
-                        <span style="color: #ffffff97;font-size: 12px;">(<?php echo $id;?>)</span>
-                    </div>
-                    <div class="record-details">
-                        <div class="top-record-details">
-                            <span class="record-title" onclick="window.location.href='blog-profile.php?id=<?php echo $id;?>'"><?php echo $title;?></span> <span class="record-title-tooltip"><?php echo $title;?></span>
-                            <span class="record-likes bi-hand-thumbs-up-fill"><?php echo $likes;?></span>
-                            <button class="record-edit-btn bi-pencil-fill"> Edit</button>
-                        </div>
-                        <div class="bottom-record-details">
-                            <span class="record-publisher"><?php echo $publisher;?></span>
-                            <span class="record-date">Date Published: <?php echo $date;?></span>
-                            <button class="record-delete-btn bi-trash3-fill" onclick="openDeletePup()"> Delete</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="record-container">
-                    <div class="record-counter">
-                        <span style="font-weight: bold; font-size: 20px;">#1 </span>
-                        <span style="color: #ffffff97;font-size: 15px;">(<?php echo $id;?>)</span>
-                    </div>
-                    <div class="record-details">
-                        <div class="top-record-details">
-                            <span class="record-title"><?php echo $title;?></span> <span class="record-title-tooltip"><?php echo $title;?></span>
-                            <span class="record-likes bi-hand-thumbs-up-fill"><?php echo $likes;?></span>
-                            <button class="record-edit-btn bi-pencil-fill"> Edit</button>
-                        </div>
-                        <div class="bottom-record-details">
-                            <span class="record-publisher"><?php echo $publisher;?></span>
-                            <span class="record-date">Date Published: <?php echo $date;?></span>
-                            <button class="record-delete-btn bi-trash3-fill"> Delete</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="record-container">
-                    <div class="record-counter">
-                        <span style="font-weight: bold; font-size: 20px;">#1 </span>
-                        <span style="color: #ffffff97;font-size: 15px;">(<?php echo $id;?>)</span>
-                    </div>
-                    <div class="record-details">
-                        <div class="top-record-details">
-                            <span class="record-title"><?php echo $title;?></span> <span class="record-title-tooltip"><?php echo $title;?></span>
-                            <span class="record-likes bi-hand-thumbs-up-fill"><?php echo $likes;?></span>
-                            <button class="record-edit-btn bi-pencil-fill"> Edit</button>
-                        </div>
-                        <div class="bottom-record-details">
-                            <span class="record-publisher"><?php echo $publisher;?></span>
-                            <span class="record-date">Date Published: <?php echo $date;?></span>
-                            <button class="record-delete-btn bi-trash3-fill"> Delete</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="record-container">
-                    <div class="record-counter">
-                        <span style="font-weight: bold; font-size: 20px;">#1 </span>
-                        <span style="color: #ffffff97;font-size: 15px;">(<?php echo $id;?>)</span>
-                    </div>
-                    <div class="record-details">
-                        <div class="top-record-details">
-                            <span class="record-title"><?php echo $title;?></span> <span class="record-title-tooltip"><?php echo $title;?></span>
-                            <span class="record-likes bi-hand-thumbs-up-fill"><?php echo $likes;?></span>
-                            <button class="record-edit-btn bi-pencil-fill"> Edit</button>
-                        </div>
-                        <div class="bottom-record-details">
-                            <span class="record-publisher"><?php echo $publisher;?></span>
-                            <span class="record-date">Date Published: <?php echo $date;?></span>
-                            <button class="record-delete-btn bi-trash3-fill"> Delete</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="record-container">
-                    <div class="record-counter">
-                        <span style="font-weight: bold; font-size: 20px;">#1 </span>
-                        <span style="color: #ffffff97;font-size: 15px;">(<?php echo $id;?>)</span>
-                    </div>
-                    <div class="record-details">
-                        <div class="top-record-details">
-                            <span class="record-title"><?php echo $title;?></span> <span class="record-title-tooltip"><?php echo $title;?></span>
-                            <span class="record-likes bi-hand-thumbs-up-fill"><?php echo $likes;?></span>
-                            <button class="record-edit-btn bi-pencil-fill"> Edit</button>
-                        </div>
-                        <div class="bottom-record-details">
-                            <span class="record-publisher"><?php echo $publisher;?></span>
-                            <span class="record-date">Date Published: <?php echo $date;?></span>
-                            <button class="record-delete-btn bi-trash3-fill"> Delete</button>
-                        </div>
-                    </div>
-                </div>
-            
-            </div>
+            <div id="contents" class="dashboard-records"> </div>
         </div>
         <div class="pagination-container">
-            <button id="out">First</button>
-            <button id="in">Previous</button>
-            <button id="in">Next</button>
-            <button id="out">Last</button>
+            <button class="out" id="first">First</button>
+            <button class="in" id="previous">Previous</button>
+            <p id="page"></p>
+            <button class="in" id="next">Next</button>
+            <button class="out" id="last">Last</button>
         </div>
     </div>
 
