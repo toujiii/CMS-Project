@@ -95,6 +95,14 @@
     background-color: #535252;
 }
 
+.pup-options #continuedDelete{
+    background-color: #6D6B6B;
+}
+
+.pup-options #continuedDelete:hover{
+    background-color: #535252;
+}
+
 .view-image-body{
     position: fixed;
     top: 0;

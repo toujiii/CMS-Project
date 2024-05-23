@@ -9,6 +9,6 @@ if(isset($_POST['id'])) {
 
     deleteRecords($connection, 'likes', $conditions);
 } else {
-    echo "Error: Value not received from client.";
+    echo "Error: Like was not removed.";
 }
 ?>

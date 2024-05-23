@@ -12,6 +12,19 @@
     </div>
 </div>
 
+<!-- Continued Pop up from Delete-->
+<div class="pup-container" id="continuedDeletePup">
+    <div class="pup-box" id="continuedDeletePupBox">
+        <div class="pup-head">
+            <span class="bi-check-circle-fill" style="font-size:40px;"></span>
+            <span><strong>Blog has been Deleted.</strong></span>
+        </div>
+        <div class="pup-options">
+            <button id="continuedDelete">Continue</button>
+        </div>
+    </div>
+</div>
+
 <!-- Admin Sidebar Pop up -->
 <div class="admin-sidebar" id="adminSidebar">
     <div class="sidebar-con" id="sideCon">
@@ -51,6 +64,8 @@
         </div>
     </div>
 </div>
+
+
 
 <!-- view Image Pop up -->
 <div class="view-image-body" id="view-image">

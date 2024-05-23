@@ -60,8 +60,13 @@
                 $params[] = $value;
                 $types .= is_numeric($value) ? 'i' : 's';
             }
-    
-            $sql .= implode(' AND ', $conditionStrings);
+            if(count($conditions) > 0){
+                $sql .= implode(' AND ', $conditionStrings);
+            }
+            else {
+                $sql .= $conditionStrings;
+            }
+            
         }
         $stmt = mysqli_prepare($connection, $sql);
     
@@ -117,5 +122,26 @@
     function getTotalLikes($connection, $blogID){
         $user_likes = mysqli_fetch_assoc(selectRecords($connection, "COUNT(*) as total", "likes", 'blogID', $blogID));
         return $user_likes['total'];
+    }
+    function deleteDirectory($dir) {
+        if (!file_exists($dir)) {
+            return true;
+        }
+    
+        if (!is_dir($dir)) {
+            return unlink($dir);
+        }
+    
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..') {
+                continue;
+            }
+    
+            if (!deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+                return false;
+            }
+        }
+    
+        return rmdir($dir);
     }
 ?>

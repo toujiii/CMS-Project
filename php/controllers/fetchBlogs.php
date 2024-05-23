@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $htmlResponse .= '        <div class="bottom-record-details">';
             $htmlResponse .= '            <span class="record-publisher">' . $row['publisher'] . '</span>';
             $htmlResponse .= '            <span class="record-date">Date Published: ' . $row['date_published'] . '</span>';
-            $htmlResponse .= '            <button class="record-delete-btn bi-trash3-fill" onclick="openDeletePup()"> Delete</button>';
+            $htmlResponse .= '            <button class="record-delete-btn bi-trash3-fill" onclick="openDeletePup(' . $row['blogID']  . ')"> Delete</button>';
             $htmlResponse .= '        </div>';
             $htmlResponse .= '    </div>';
             $htmlResponse .= '</div>';
