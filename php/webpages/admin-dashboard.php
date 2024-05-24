@@ -24,8 +24,8 @@ $count = mysqli_num_rows($data);
 </head>
 
 <body>
-    <?php 
-        include "../webpages/Pups.php";
+    <?php
+    include "../webpages/Pups.php";
     ?>
     <div class="main-container">
         <div class="admin-nav">
@@ -35,10 +35,11 @@ $count = mysqli_num_rows($data);
         <div class="dashboard-contents">
             <div class="dashboard-nav">
                 <span>Blog Records</span>
-                <form action="">
+                <div class="search-con" action="">
                     <input class="dashboard-search" placeholder="Search a blog" type="text" id="search" autocomplete="off">
-                    <button class="dashboard-search-btn bi-search" type="submit"></button>
-                </form>
+                    <button id="search-icon" class="dashboard-search-btn bi-search" type="submit"></button>
+                    <button id="X-icon" class="dashboard-close-btn bi-x"></button>
+                </div>
             </div>
             <div id="contents" class="dashboard-records"> </div>
         </div>

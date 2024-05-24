@@ -41,6 +41,7 @@
             mysqli_stmt_bind_param($stmt, $types , ...$data);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
+            return true; 
         }
         else {
             return false; 
@@ -144,4 +145,27 @@
     
         return rmdir($dir);
     }
+
+    function InsertImage($blogID){
+        $fullPath = "../../blog-images/blog-" . $blogID;
+        deleteDirectory($fullPath);
+    
+        if (!file_exists($fullPath)) {
+            mkdir($fullPath);
+        }
+    
+        if (isset($_FILES['image']) && isset($_FILES['image']['tmp_name'])) {
+            $fileTmpName = $_FILES['image']['tmp_name'];
+    
+            $newFileName = "cover.png";
+    
+            $destination = $fullPath . '/' . $newFileName;
+    
+            if (!move_uploaded_file($fileTmpName, $destination)) {
+                echo "<script> console.log('Failed to upload image.');</script>";
+            }
+        } else {
+            echo "<script> console.log('Image file not found.');</script>";
+        }
+    }    
 ?>

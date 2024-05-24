@@ -19,22 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $title = $_POST['title'];
     $blog_data = mysqli_fetch_assoc(selectRecords($connection,"blogID","blogs","title", $title));
-    $fullPath = "../../blog-images/blog-" . $blog_data['blogID'];
-
-    if (!file_exists($fullPath)) {
-        mkdir($fullPath);
-    }
-
-    $fileName = $_FILES['image']['name'];
-    $fileTmpName = $_FILES['image']['tmp_name'];
-
-    $newFileName = "cover.png";
-
-    $destination = $fullPath . '/' . $newFileName;
-
-    if (!move_uploaded_file($fileTmpName, $destination)) {
-        echo "<script> console.log('Failed to upload image.');</script>";
-    }
+    
+    InsertImage($blog_data['blogID']);
 }
 ?>
 

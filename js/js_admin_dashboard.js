@@ -31,7 +31,7 @@ function openDeletePup(blogID) {
             },
             success: function (response) {
                 console.log(response);
-                if(offset == counted-1){
+                if (offset == counted - 1) {
                     offset = offset - 5;
                 }
                 fetchBlogs(offset, searchText);
@@ -133,7 +133,7 @@ next.addEventListener('click', function () {
         offset = counted;
     }
     if (counted == offset) {
-        offset = counted-5;
+        offset = counted - 5;
     }
     console.log('offset:', offset);
     fetchBlogs(offset, searchText);
@@ -159,15 +159,34 @@ let last = document.getElementById('last');
 last.addEventListener('click', function () {
     offset = 5 * (parseInt(counted / 5));
     if (counted == offset) {
-        offset = counted-5;
+        offset = counted - 5;
     }
     console.log('offset:', offset);
     fetchBlogs(offset, searchText);
 });
 
 let search = document.getElementById('search');
+let search_icon = document.getElementById('search-icon');
+let X_icon = document.getElementById('X-icon');
+
+
 search.addEventListener('keyup', function () {
+
+    search_icon.style.display = 'none';
+    X_icon.style.display = 'flex';
+
     searchText = search.value;
+
+    X_icon.addEventListener('click', function () {
+        searchText = '';
+        $(search).val('');
+
+        search_icon.style.display = 'flex';
+        X_icon.style.display = 'none';
+
+        fetchBlogs(offset, searchText);
+    });
+
     if (searchText.trim() !== '') {
         offset = 0;
         fetchBlogs(offset, searchText);
@@ -176,4 +195,7 @@ search.addEventListener('keyup', function () {
         offset = 0;
         fetchBlogs(offset, searchText);
     }
+
+
+
 });

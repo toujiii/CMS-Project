@@ -38,7 +38,7 @@
     <div class="side-void" onclick="removeAdminSidebar()"></div>
 </div>
 
-<!-- Confirmation Pop up -->
+<!-- Add Confirmation Pop up -->
 <div class="pup-container" id="confirmPup">
     <div class="pup-box" id="confirmPupBox">
         <div class="pup-head">
@@ -52,7 +52,7 @@
     </div>
 </div>
 
-<!-- Continued Pop up -->
+<!-- Add Continued Pop up -->
 <div class="pup-container" id="continuedPup">
     <div class="pup-box" id="continuedPupBox">
         <div class="pup-head">
@@ -61,6 +61,34 @@
         </div>
         <div class="pup-options">
             <button id="continued">Continue</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Confirmation Pop up -->
+<div class="pup-container" id="confirmEditPup">
+    <div class="pup-box" id="confirmEditPupBox">
+        <div class="pup-head">
+            <span><strong>Are you sure you want to Edit this Blog?</strong></span>
+            <span style="font-size: 13px;">This blog will be updated on the website.</span>
+        </div>
+        <div class="pup-options">
+            <button id="cancel" onclick="closeConfirmEditPup()">Cancel</button>
+            <button id="continueEdit">Edit</button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Continued Pop up -->
+<div class="pup-container" id="continuedEditPup">
+    <div class="pup-box" id="continuedEditPupBox">
+        <div class="pup-head">
+            <span class="bi-check-circle-fill" style="font-size:40px;"></span>
+            <span><strong>Blog has been Updated.</strong></span>
+        </div>
+        <div class="pup-options">
+            <button id="continuedEdit">Continue</button>
         </div>
     </div>
 </div>

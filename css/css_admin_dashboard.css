@@ -89,7 +89,7 @@ body {
     font-size: 40px;
 }
 
-.dashboard-nav form {
+.dashboard-nav .search-con {
     margin: 0;
     padding: 0%;
     height: 30px;
@@ -114,7 +114,7 @@ body {
     outline: none;
 }
 
-form .dashboard-search-btn {
+.search-con .dashboard-search-btn {
     border: none;
     height: 100%;
     font-size: 18px;
@@ -122,6 +122,23 @@ form .dashboard-search-btn {
     align-items: center;
     justify-content: center;
 }
+
+.search-con .dashboard-close-btn {
+    border: none;
+    height: 100%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.search-con .dashboard-close-btn:hover {
+    color: #3B3B3B;
+    cursor: pointer;
+    background-color: #d0c8c8;
+}
+
 
 
 .dashboard-records {

@@ -103,6 +103,22 @@
     background-color: #535252;
 }
 
+.pup-options #continueEdit{
+    background-color: #14724F;
+}
+
+.pup-options #continueEdit:hover{
+    background-color: #0e5239;
+}
+
+.pup-options #continuedEdit{
+    background-color: #6D6B6B;
+}
+
+.pup-options #continuedEdit:hover{
+    background-color: #535252;
+}
+
 .view-image-body{
     position: fixed;
     top: 0;
