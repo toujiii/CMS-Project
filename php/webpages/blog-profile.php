@@ -13,6 +13,8 @@ updateRecords($connection, "blogs", "popularity", $total_popularity, $id);
 
 
 $user_likes = selectRecords($connection, "*", "likes", 'deviceID', $_COOKIE['device_id']);
+$data = selectRecords($connection, "*", "blogs", '', '', 'RAND()', 5);
+
 
 $like_status = false;
 
@@ -25,11 +27,9 @@ while ($row = mysqli_fetch_assoc($user_likes)) {
 
 $likes = getTotalLikes($connection, $id);
 
-// $_SESSION['Admin'] = true;
-// unset($_SESSION['Admin']);
-
 $_SESSION['Page'] = "blog-profile.php";
-$_SESSION['blog_id'] = "?id=$id"
+$_SESSION['blog_id'] = "?id=$id";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,22 +61,30 @@ $_SESSION['blog_id'] = "?id=$id"
     }
 
     ?>
+    <div class="admin-sidebar">
 
-    <div class="profile-section1">
+    </div>
+
+    <div class="profile-section1" <?php if (isset($_SESSION['Admin'])) { echo "style='margin-top: 0;'";}?>>
         <div class="blog-profile-title">
+            <?php if (!isset($_SESSION['Admin'])) {?>
             <div class="navigation">
                 <a href="index.php">Home</a>
                 <p style="font-size: 15px;">&nbsp;>&nbsp;</p>
                 <a class="nav-title" href="blog-profile.php?id=<?php echo $id; ?>"><?php echo $blog_data['title']; ?></a>
             </div>
+            <?php }?>
             <p><?php echo $blog_data['title']; ?></p>
             <span class="bi-clock"> <?php echo $blog_data['date_published']; ?></span>
         </div>
         <div class="blog-profile-details">
             <p class="bi-person-fill"> <?php echo $blog_data['publisher']; ?></p>
-
-            <label for="like-btn" id="btn-like" class="<?php if($like_status) { echo "bi-hand-thumbs-up-fill";} else {echo "bi-hand-thumbs-up";} ?>" onclick="handleCheckboxClick(<?php echo $id; ?>)"> <?php echo $likes; ?></label>
-            <input id="like-btn" type="checkbox" <?php if($like_status) echo "checked"; ?>>
+            <?php if (!isset($_SESSION['Admin'])) { ?>
+                <label for="like-btn" id="btn-like" class="<?php if($like_status) { echo "bi-hand-thumbs-up-fill";} else {echo "bi-hand-thumbs-up";} ?>" onclick="handleCheckboxClick(<?php echo $id; ?>)"> <?php echo $likes; ?></label>
+                <input id="like-btn" type="checkbox" <?php if($like_status) echo "checked"; ?>>
+            <?php } else if (isset($_SESSION['Admin'])) { ?>
+                <span class="bi-hand-thumbs-up" style="font-size: 20px;"> <?php echo $likes; ?></span>
+            <?php }?>
         </div>
         <div class="profile-gap"></div>
     </div>
@@ -95,11 +103,9 @@ $_SESSION['blog_id'] = "?id=$id"
             <p>Recommended Blogs:</p>
         </div>
         <div class="reco-blogs">
-            <a class="popular-blog-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
-            <a class="popular-blog-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
-            <a class="popular-blog-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
-            <a class="popular-blog-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
-            <a class="popular-blog-link" href="">Exploring the Intersection of Art and Technology: A Journey Through Creativity</a>
+        <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+            <a class="popular-link" href="blog-profile.php?id=<?php echo  $row['blogID']; ?>"><?php echo $row['title']; ?></a>
+        <?php }?>
         </div>
     </div>
     <?php

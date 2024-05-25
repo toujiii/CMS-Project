@@ -77,7 +77,6 @@ $popular_blogs = selectRecords($connection, "*", "blogs", '', '', 'popularity DE
             <div class="head-wrap" id="for-you">
                 <p class="blog-head-title">Blogs for you</p>
                 <a href="?sort=latest" style="margin-left: auto; <?php if (isset($_GET['sort']) == 'latest') echo 'background-color: #3d3d3d;'; ?> " class="blog-sort">Latest</a>
-                <a href="" style="margin-left: 5px;" class="blog-sort">Most Likes</a>
             </div>
             <div class="blogs-wrap">
                 <?php while ($row = mysqli_fetch_assoc($data)) {

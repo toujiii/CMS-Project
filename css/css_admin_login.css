@@ -121,19 +121,19 @@ body{
     font-family: "Century Gothic";
 }
 
-.login-form-con form .login-btn{
+.login-form-con .login-btn{
     background-color: #B8AB90;
     width: 60%;
     height: 35px;
     outline: none;
     border-radius: 17px;
     border: 2px solid #3B3B3B;
-    margin: 55px auto 0 auto;
+    margin: 40px auto 10px auto;
     display: block;
     font-family: "Century Gothic";
 }
 
-.login-form-con form .login-btn:hover{
+.login-form-con .login-btn:hover{
     background-color: #8f8571;
     cursor: pointer;
 }
@@ -146,7 +146,6 @@ body{
 }
 
 .go-back:hover{
-    font-weight: bold;
     text-decoration: underline;
     cursor: pointer;
 }

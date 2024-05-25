@@ -10,6 +10,8 @@ else $blog_id = '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/css_admin_login.css">
+    <script defer src="../../js/js_admin_login.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     <title>Log In</title>
 </head>
 
@@ -24,18 +26,16 @@ else $blog_id = '';
         <div class="right-panel">
             <img src="../../images/logo.png" alt="logo">
             <p class="login-head">LOG IN</p>
-            <!-- <p class="login-err">*Invalid Email or Password</p> -->
+            <p class="login-err" id="error-meg"></p>
 
             <div class="login-form-con">
-                <form action="" method="post">
+                <form action="" method="post" id="form-con">
                     <p class="login-email">Email:</p>
-                    <input type="text" name="email" placeholder="example@gmail.com" class="login-input" autocomplete="off">
+                    <input type="email" id="email" name="email" placeholder="example@gmail.com" class="login-input" required>
                     <p class="login-password">Password:</p>
-                    <input type="text" name="password" placeholder="password123" class="login-input" autocomplete="off">
-                    <button type="submit" class="login-btn">Continue</button>
+                    <input type="password" id="password" name="password" placeholder="password123" class="login-input"  required>
                 </form>
-
-
+                <button id="submit" class="login-btn">Continue</button>
             </div>
             <a class="go-back" href="../webpages/<?php echo $_SESSION['Page'].$blog_id; ?>">Go Back</a>
 

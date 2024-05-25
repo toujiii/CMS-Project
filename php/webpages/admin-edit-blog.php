@@ -15,12 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-
     $data = array();
     foreach ($inputFieldNames as $fieldName) {
         $data[] = $_POST[$fieldName];
     }
-
 
     $recorded = updateRecords($connection, 'blogs', $inputFieldNames, $data, $id);
 
@@ -82,9 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p class="form-head">Blog Image:</p>
                     <label id="imagePreview" for="file-upload" class="form-label-upload">
                         <?php if (isset($blog_data['blogID'])) { ?>
-                            <img src="<?php echo "../../blog-images/blog-" . $blog_data['blogID'] . "/cover.png";  ?>" alt="">
-                        <?php } else if (isset($_POST['title'])) { ?>
-                            <img src="<?php echo "../../blog-images/blog-" . $blog_data['blogID'] . "/cover.png";  ?>" alt="">
+                            <img src="<?php echo "../../blog-images/blog-" . $blog_data['blogID'] . "/cover.png?v=" . time();  ?>" alt="">
                         <?php } else { ?>
                             <p class="bi-card-image"></p>
                         <?php } ?>

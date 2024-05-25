@@ -43,6 +43,7 @@ document.getElementById("continueEdit").addEventListener("click", function () {
 });
 
 document.getElementById("continuedEdit").addEventListener("click", function () {
+    window.location.reload(true);
     window.location.href = "admin-dashboard.php";
 });
 
