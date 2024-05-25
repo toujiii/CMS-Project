@@ -1,6 +1,20 @@
 <?php
+session_start();
 require "../controllers/funtions.php";
+
+if (isset($_SESSION['create_status'])) {
+    if ($_SESSION['create_status'] == 'created') {
+        header("Location:index.php");
+    }
+}
+else{
+    header("Location:index.php");
+}
+
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 
     $inputFieldNames = array_keys($_POST);
     if (isset($_POST['image'])) {
@@ -14,12 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     foreach ($inputFieldNames as $fieldName) {
         $data[] = $_POST[$fieldName];
     }
-    
+
     $recorded = insertRecords($connection, "blogs", $inputFieldNames, $data);
 
     $title = $_POST['title'];
-    $blog_data = mysqli_fetch_assoc(selectRecords($connection,"blogID","blogs","title", $title));
-    
+    $blog_data = mysqli_fetch_assoc(selectRecords($connection, "blogID", "blogs", "title", $title));
+
     InsertImage($blog_data['blogID']);
 }
 ?>
@@ -36,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../../css/css_Pups.css">
     <script defer src="../../js/js_image_preview.js"> </script>
     <script defer src="../../js/js_admin_create_blog.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     <script id="recorded-value" data-recorded="<?php echo $recorded ? 'true' : 'false'; ?>"></script>
     <title>Create Blog</title>
     <script src="../../tinymce/js/tinymce/tinymce.min.js"></script>

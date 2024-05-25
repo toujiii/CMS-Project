@@ -3,6 +3,11 @@ session_start();
 if ($_SESSION['Page'] == "blog-profile.php")
     $blog_id = $_SESSION['blog_id'];
 else $blog_id = '';
+
+if(isset($_SESSION['Admin'])){
+    header("Location:admin-dashboard.php");
+}
+
 ?>
 <html lang="en">
 
@@ -26,7 +31,7 @@ else $blog_id = '';
         <div class="right-panel">
             <img src="../../images/logo.png" alt="logo">
             <p class="login-head">LOG IN</p>
-            <p class="login-err" id="error-meg"></p>
+            <p class="login-err" id="error-meg  "></p>
 
             <div class="login-form-con">
                 <form action="" method="post" id="form-con">

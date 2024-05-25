@@ -1,5 +1,11 @@
 <?php
+session_start();
 require "../controllers/funtions.php";
+$_SESSION['page'] = 'admin-dashboard';
+
+if (!isset($_SESSION['Admin'])) {
+    header("Location:index.php");
+}
 
 $data = selectRecords($connection, "*", "blogs");
 $count = mysqli_num_rows($data);
@@ -18,6 +24,7 @@ $count = mysqli_num_rows($data);
     <link rel="icon" href="../../images/icon.png">
     <link rel="stylesheet" href="../webpages/Pups.php">
     <script defer src="../../js/js_admin_dashboard.js"></script>
+    <script defer src="../../js/js_set_session.js"></script>
     <script id="count" counted="<?php echo $count; ?>"></script>
     <script src="../../js/jquery.min.js"></script>
     <title>Admin Dashboard</title>
@@ -25,7 +32,7 @@ $count = mysqli_num_rows($data);
 
 <body>
     <?php
-    include "../webpages/Pups.php";
+    include "Pups.php";
     ?>
     <div class="main-container">
         <div class="admin-nav">

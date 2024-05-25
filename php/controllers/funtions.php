@@ -148,6 +148,7 @@
 
     function InsertImage($blogID){
         $fullPath = "../../blog-images/blog-" . $blogID;
+        deleteDirectory($fullPath);
     
         if (!file_exists($fullPath)) {
             mkdir($fullPath);

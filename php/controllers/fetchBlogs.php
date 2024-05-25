@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $htmlResponse .= '            <span class="record-title" onclick="window.location.href=\'blog-profile.php?id=' . $row['blogID'] . '\'">' . $row['title'] . '</span>';
             $htmlResponse .= '            <span class="record-title-tooltip">' . $row['title'] . '</span>';
             $htmlResponse .= '            <span class="record-likes bi-hand-thumbs-up-fill">' . $row['likes'] . '</span>';
-            $htmlResponse .= '            <button class="record-edit-btn bi-pencil-fill" onclick="window.location.href=\'admin-edit-blog.php?id=' . $row['blogID'] . '\'"> Edit</button>';
+            $htmlResponse .= '            <button class="record-edit-btn bi-pencil-fill" id="edit-blog" onclick="editBlog(' . $row['blogID'] . ')"> Edit</button>';
             $htmlResponse .= '        </div>';
             $htmlResponse .= '        <div class="bottom-record-details">';
             $htmlResponse .= '            <span class="record-publisher">' . $row['publisher'] . '</span>';

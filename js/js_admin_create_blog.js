@@ -54,7 +54,15 @@ document.getElementById("continue").addEventListener("click", function () {
 });
 
 document.getElementById("continued").addEventListener("click", function () {
-    window.location.href = "admin-dashboard.php";
+    $.ajax({
+        method: 'POST',
+        url: '../controllers/removeSessionAdd.php',
+        success: function(response) {
+            console.log('Request was successful:', response);
+            window.location.href = "admin-dashboard.php";
+        },
+    });
+   
 });
 
 

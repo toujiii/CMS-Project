@@ -74,12 +74,12 @@ let sideCon = document.getElementById('sideCon');
 
 function openAdminSidebar() {
     adminSidebar.style.visibility = "visible";
-    sideCon.style.left = "0";
+    sideCon.style.marginLeft = "0";
     adminSidebar.style.opacity = "1";
 }
 
 function removeAdminSidebar() {
-    sideCon.style.left = "-50%";
+    sideCon.style.marginLeft = "-300px";
 
     setTimeout(function () {
         adminSidebar.style.visibility = "hidden";
@@ -199,3 +199,15 @@ search.addEventListener('keyup', function () {
 
 
 });
+
+
+function editBlog(blogID){
+    $.ajax({
+        method: 'POST',
+        url: '../controllers/setSessionEdit.php',
+        success: function(response) {
+            console.log('Request was successful:', response);
+            window.location.href = "../webpages/admin-edit-blog.php?id="+blogID;
+        },
+    });
+}

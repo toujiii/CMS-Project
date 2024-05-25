@@ -43,8 +43,14 @@ document.getElementById("continueEdit").addEventListener("click", function () {
 });
 
 document.getElementById("continuedEdit").addEventListener("click", function () {
-    window.location.reload(true);
-    window.location.href = "admin-dashboard.php";
+    $.ajax({
+        method: 'POST',
+        url: '../controllers/removeSessionEdit.php',
+        success: function(response) {
+            console.log('Request was successful:', response);
+            window.location.href = "admin-dashboard.php";
+        },
+    });
 });
 
 

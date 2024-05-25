@@ -44,27 +44,25 @@ $_SESSION['blog_id'] = "?id=$id";
     <link rel="stylesheet" href="../../css/css_Pups.css">
     <link rel="icon" href="../../images/icon.png">
     <script defer src="../../js/js_search.js"></script>
-    <script defer src="../../js/jquery.min.js"></script>
     <script defer src="../../js/js_header.js"></script>
     <script defer src="../../js/js_blog_profile.js"></script>
-
-    
-
+    <script src="../../js/jquery.min.js"></script>
     <title><?php echo $blog_data['title']; ?></title>
 </head>
 
 <body>
     <?php
-    include "Pups.php";
+    
     if (!isset($_SESSION['Admin'])) {
         include "header.php";
     }
 
+    if (isset($_SESSION['Admin'])) {
     ?>
-    <div class="admin-sidebar">
-
-    </div>
-
+        <div class="admin-top">
+            <a class="bi-house" href="admin-dashboard.php"> Home</a>
+        </div>
+    <?php }?>
     <div class="profile-section1" <?php if (isset($_SESSION['Admin'])) { echo "style='margin-top: 0;'";}?>>
         <div class="blog-profile-title">
             <?php if (!isset($_SESSION['Admin'])) {?>
@@ -95,19 +93,22 @@ $_SESSION['blog_id'] = "?id=$id";
         <div class="profile-contents" id="description">
             <p><?php echo $blog_data['content']; ?></p>
         </div>
-        <button class="expand" id="expand" onclick="expandDescription()">Read More</button>
+        <button class="expand" <?php if (isset($_SESSION['Admin'])) { echo 'style="border-bottom: 4px solid #202020;"';}?>  id="expand" onclick="expandDescription()">Read More</button>
     </div>
-    <div class="profile-section3">
-        <div class="profile-gap"></div>
-        <div class="reco-title">
-            <p>Recommended Blogs:</p>
+    <?php if (!isset($_SESSION['Admin'])) {?>
+        <div class="profile-section3">
+            <div class="profile-gap"></div>
+            <div class="reco-title">
+                <p>Recommended Blogs:</p>
+            </div>
+            <div class="reco-blogs">
+            
+            <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+                <a class="popular-link" href="blog-profile.php?id=<?php echo  $row['blogID']; ?>"><?php echo $row['title']; ?></a>
+            <?php }?>
+            </div>
         </div>
-        <div class="reco-blogs">
-        <?php while ($row = mysqli_fetch_assoc($data)) { ?>
-            <a class="popular-link" href="blog-profile.php?id=<?php echo  $row['blogID']; ?>"><?php echo $row['title']; ?></a>
-        <?php }?>
-        </div>
-    </div>
+    <?php }?>
     <?php
     include "footer.php";
 

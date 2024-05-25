@@ -32,7 +32,7 @@
             <img src="../../images/full-logo.png" alt="">
         </div>
         <a href="../webpages/admin-dashboard.php" class="bi-house">&nbsp;Home</a>
-        <a href="../webpages/admin-create-blog.php" class="bi-plus-square">&nbsp;&nbsp;Create a Blog</a>
+        <a href="../webpages/admin-create-blog.php" id="create-blog" class="bi-plus-square">&nbsp;&nbsp;Create a Blog</a>
         <a href="../controllers/logout.php" id="logout" class="bi-door-open-fill">&nbsp;Log out</a>
     </div>
     <div class="side-void" onclick="removeAdminSidebar()"></div>

@@ -2,6 +2,10 @@
 session_start();
 $_SESSION['Page'] = "index.php";
 
+if(isset($_SESSION['Admin'])){
+    header("Location:admin-dashboard.php");
+}
+
 require "../controllers/funtions.php";
 
 if (isset($_GET['sort'])) {

@@ -1,5 +1,15 @@
 <?php
+session_start();
 require "../controllers/funtions.php";
+
+if (isset($_SESSION['edit_status'])) {
+    if ($_SESSION['edit_status'] == 'edited') {
+        header("Location:index.php");
+    }
+}
+else{
+    header("Location:index.php");
+}
 
 $id = $_GET['id'];
 $blog_data = mysqli_fetch_assoc(selectRecords($connection, "*", "blogs", "blogID", $id));
@@ -41,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../../css/css_Pups.css">
     <script defer src="../../js/js_image_preview.js"> </script>
     <script defer src="../../js/js_admin_edit_blog.js"></script>
+    <script defer src="../../js/js_set_session.js"></script>
     <script id="recorded-value" data-recorded="<?php echo $recorded ? 'true' : 'false'; ?>"></script>
     <script src="../../js/jquery.min.js"></script>
     <title>Edit Blog</title>

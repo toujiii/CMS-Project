@@ -1,3 +1,6 @@
+
+
+
 let content_section = document.getElementById('content-section');
 let description = document.getElementById('description');
 let expand = document.getElementById('expand');
@@ -102,3 +105,4 @@ function deleteLike(blogID) {
         }
     });
 }
+
